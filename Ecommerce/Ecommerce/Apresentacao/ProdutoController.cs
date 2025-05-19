@@ -1,4 +1,4 @@
-﻿using Ecommerce.Modelos;
+﻿using Ecommerce.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
