@@ -9,6 +9,6 @@ namespace Ecommerce.Persistencia.Intefaces
         Task<Produto> AddAsync(Produto produto);
         Task<Produto> UpdateAsync(Produto produto);
         Task DeleteAsync(int id);
-        Task<List<Produto>> GetAllFiltered();
+        Task<List<Produto>> GetAllFiltered(string? categoria, double? precoMenor, double? precoMaior, bool? status);
     }
 }

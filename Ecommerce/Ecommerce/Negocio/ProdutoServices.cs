@@ -23,9 +23,9 @@ namespace Ecommerce.Negocio
             return await _produtoRepository.GetByIdAsync(id);
         }
 
-        public Task<List<Produto>> BuscarProdutosFiltradosAsync()
+        public async Task<List<Produto>> BuscarProdutosFiltradosAsync(string? categoria, double? precoMenor, double? precoMaior, bool? status)
         {
-            throw new NotImplementedException();
+            return await _produtoRepository.GetAllFiltered(categoria, precoMenor, precoMaior, status);
         }
 
         public async Task<Produto> AdicionarProdutoAsync(Produto produto)

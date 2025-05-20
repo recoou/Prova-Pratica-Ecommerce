@@ -63,9 +63,20 @@ namespace Ecommerce.Persistencia
 
         }
 
-        public Task<List<Produto>> GetAllFiltered()
+        public async Task<List<Produto>> GetAllFiltered(string? categoria, double? precoMenor, double? precoMaior, bool? status)
         {
-            throw new NotImplementedException();
+            var query = _context.Produtos.AsQueryable();
+
+            if (!string.IsNullOrEmpty(categoria))
+                query = query.Where(p => p.Categoria.ToLower() == categoria.ToLower());
+            if (precoMenor.HasValue)
+                query = query.Where(p => p.Preco >= precoMenor.Value);
+            if (precoMaior.HasValue)
+                query = query.Where(p => p.Preco <= precoMaior.Value);
+            if (status.HasValue)
+                query = query.Where(p => p.Status == status.Value);
+
+            return await query.ToListAsync();
         }
     }
 }

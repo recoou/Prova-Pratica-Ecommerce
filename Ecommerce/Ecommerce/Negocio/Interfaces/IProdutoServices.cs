@@ -9,6 +9,6 @@ namespace Ecommerce.Negocio.Interfaces
         Task<Produto> AdicionarProdutoAsync(Produto produto);
         Task<Produto> AtualizarProdutoAsync(Produto produto);
         Task ApagarProdutoAsync(int id);
-        Task<List<Produto>> BuscarProdutosFiltradosAsync();
+        Task<List<Produto>> BuscarProdutosFiltradosAsync(string? categoria, double? precoMenor, double? precoMaior, bool? status);
     }
 }

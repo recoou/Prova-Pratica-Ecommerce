@@ -3,8 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\marco\\Desktop\\Teste Pr\u00E1tico MA9\\Ecommerce\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{7D09229A-4CAC-4D23-9B50-C918E9F720B2}|Ecommerce\\Ecommerce.csproj|c:\\users\\marco\\desktop\\teste pr\u00E1tico ma9\\ecommerce\\ecommerce\\apresentacao\\produtocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D09229A-4CAC-4D23-9B50-C918E9F720B2}|Ecommerce\\Ecommerce.csproj|solutionrelative:ecommerce\\apresentacao\\produtocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{7D09229A-4CAC-4D23-9B50-C918E9F720B2}|Ecommerce\\Ecommerce.csproj|c:\\users\\marco\\desktop\\teste pr\u00E1tico ma9\\ecommerce\\ecommerce\\persistencia\\produtorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7D09229A-4CAC-4D23-9B50-C918E9F720B2}|Ecommerce\\Ecommerce.csproj|solutionrelative:ecommerce\\persistencia\\produtorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D09229A-4CAC-4D23-9B50-C918E9F720B2}|Ecommerce\\Ecommerce.csproj|c:\\users\\marco\\desktop\\teste pr\u00E1tico ma9\\ecommerce\\ecommerce\\negocio\\interfaces\\iprodutoservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D09229A-4CAC-4D23-9B50-C918E9F720B2}|Ecommerce\\Ecommerce.csproj|solutionrelative:ecommerce\\negocio\\interfaces\\iprodutoservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7D09229A-4CAC-4D23-9B50-C918E9F720B2}|Ecommerce\\Ecommerce.csproj|c:\\users\\marco\\desktop\\teste pr\u00E1tico ma9\\ecommerce\\ecommerce\\models\\produto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -15,16 +23,8 @@
       "RelativeMoniker": "D:0:0:{7D09229A-4CAC-4D23-9B50-C918E9F720B2}|Ecommerce\\Ecommerce.csproj|solutionrelative:ecommerce\\persistencia\\intefaces\\iprodutorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7D09229A-4CAC-4D23-9B50-C918E9F720B2}|Ecommerce\\Ecommerce.csproj|c:\\users\\marco\\desktop\\teste pr\u00E1tico ma9\\ecommerce\\ecommerce\\apresentacao\\produtocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7D09229A-4CAC-4D23-9B50-C918E9F720B2}|Ecommerce\\Ecommerce.csproj|solutionrelative:ecommerce\\apresentacao\\produtocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{7D09229A-4CAC-4D23-9B50-C918E9F720B2}|Ecommerce\\Ecommerce.csproj|c:\\users\\marco\\desktop\\teste pr\u00E1tico ma9\\ecommerce\\ecommerce\\negocio\\produtoservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7D09229A-4CAC-4D23-9B50-C918E9F720B2}|Ecommerce\\Ecommerce.csproj|solutionrelative:ecommerce\\negocio\\produtoservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7D09229A-4CAC-4D23-9B50-C918E9F720B2}|Ecommerce\\Ecommerce.csproj|c:\\users\\marco\\desktop\\teste pr\u00E1tico ma9\\ecommerce\\ecommerce\\negocio\\interfaces\\iprodutoservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7D09229A-4CAC-4D23-9B50-C918E9F720B2}|Ecommerce\\Ecommerce.csproj|solutionrelative:ecommerce\\negocio\\interfaces\\iprodutoservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7D09229A-4CAC-4D23-9B50-C918E9F720B2}|Ecommerce\\Ecommerce.csproj|c:\\users\\marco\\desktop\\teste pr\u00E1tico ma9\\ecommerce\\ecommerce\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -42,17 +42,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "ProdutoController.cs",
               "DocumentMoniker": "C:\\Users\\marco\\Desktop\\Teste Pr\u00E1tico MA9\\Ecommerce\\Ecommerce\\Apresentacao\\ProdutoController.cs",
               "RelativeDocumentMoniker": "Ecommerce\\Apresentacao\\ProdutoController.cs",
               "ToolTip": "C:\\Users\\marco\\Desktop\\Teste Pr\u00E1tico MA9\\Ecommerce\\Ecommerce\\Apresentacao\\ProdutoController.cs",
               "RelativeToolTip": "Ecommerce\\Apresentacao\\ProdutoController.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAuwDoAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAuwDoAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-19T00:15:55.268Z",
               "IsPinned": true,
@@ -60,7 +60,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "ProdutoServices.cs",
               "DocumentMoniker": "C:\\Users\\marco\\Desktop\\Teste Pr\u00E1tico MA9\\Ecommerce\\Ecommerce\\Negocio\\ProdutoServices.cs",
               "RelativeDocumentMoniker": "Ecommerce\\Negocio\\ProdutoServices.cs",
@@ -73,7 +73,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "IProdutoServices.cs",
               "DocumentMoniker": "C:\\Users\\marco\\Desktop\\Teste Pr\u00E1tico MA9\\Ecommerce\\Ecommerce\\Negocio\\Interfaces\\IProdutoServices.cs",
               "RelativeDocumentMoniker": "Ecommerce\\Negocio\\Interfaces\\IProdutoServices.cs",
@@ -86,20 +86,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "ProdutoRepository.cs",
               "DocumentMoniker": "C:\\Users\\marco\\Desktop\\Teste Pr\u00E1tico MA9\\Ecommerce\\Ecommerce\\Persistencia\\ProdutoRepository.cs",
               "RelativeDocumentMoniker": "Ecommerce\\Persistencia\\ProdutoRepository.cs",
               "ToolTip": "C:\\Users\\marco\\Desktop\\Teste Pr\u00E1tico MA9\\Ecommerce\\Ecommerce\\Persistencia\\ProdutoRepository.cs",
               "RelativeToolTip": "Ecommerce\\Persistencia\\ProdutoRepository.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAADwvzkAAAA1AAAAAAAAAA==",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAmwDkAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-20T01:03:42.132Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "IProdutoRepository.cs",
               "DocumentMoniker": "C:\\Users\\marco\\Desktop\\Teste Pr\u00E1tico MA9\\Ecommerce\\Ecommerce\\Persistencia\\Intefaces\\IProdutoRepository.cs",
               "RelativeDocumentMoniker": "Ecommerce\\Persistencia\\Intefaces\\IProdutoRepository.cs",
@@ -112,7 +112,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Produto.cs",
               "DocumentMoniker": "C:\\Users\\marco\\Desktop\\Teste Pr\u00E1tico MA9\\Ecommerce\\Ecommerce\\Models\\Produto.cs",
               "RelativeDocumentMoniker": "Ecommerce\\Models\\Produto.cs",

@@ -1,6 +1,7 @@
 ﻿using Ecommerce.Models;
 using Ecommerce.Negocio.Interfaces;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -74,6 +75,26 @@ namespace Ecommerce.Apresentacao
             await _produtoServices.ApagarProdutoAsync(id);
 
             return Ok("Produto foi apagado com sucesso.");
+
+        }
+        [HttpGet("filtrar")]
+        public async Task<ActionResult<List<Produto>>> FiltrarProdutos(
+            [FromQuery] string? categoria,
+            [FromQuery] double? precoMenor,
+            [FromQuery] double? precoMaior,
+            [FromQuery] bool? status
+            )
+        {
+            try
+            {
+                var produtos = await _produtoServices.BuscarProdutosFiltradosAsync(categoria, precoMenor, precoMaior, status);
+                return Ok(produtos);
+            }
+            catch (Exception ex) 
+            {
+                return BadRequest($"Houve um erro ao chamar o filtro: {ex.Message}");
+            }
+
 
         }
     }
