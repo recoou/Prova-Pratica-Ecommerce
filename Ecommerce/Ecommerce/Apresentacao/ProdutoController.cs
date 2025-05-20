@@ -21,17 +21,31 @@ namespace Ecommerce.Apresentacao
         [HttpGet]
         public async Task<ActionResult<List<Produto>>> GetProdutos()
         {
-            var produtos = await _produtoServices.BuscarTodosProdutosAsync();
-            return Ok(produtos);
+            try
+            {
+                var produtos = await _produtoServices.BuscarTodosProdutosAsync();
+                return Ok(produtos);
+            }
+            catch (Exception ex) { 
+                return StatusCode(500, new {erro = "Erro inesperado", detalhes = ex.Message});
+            }
+            
         }
 
         [HttpGet]
         [Route("{id}")]
         public async Task<ActionResult<Produto>> GetProdutoById(int id)
         {
-           var produto = await _produtoServices.BuscarProdutoPorIdAsync(id);
+            try
+            {
+                var produto = await _produtoServices.BuscarProdutoPorIdAsync(id);
 
-            return Ok(produto);
+                return Ok(produto);
+            }
+            catch (Exception ex) 
+            {
+                return StatusCode(500, new { erro = "Erro inesperado", detalhes = ex.Message });
+            }
         }
 
         [HttpPost]
@@ -42,8 +56,15 @@ namespace Ecommerce.Apresentacao
                 return BadRequest();
             }
 
-            novoProduto = await _produtoServices.AdicionarProdutoAsync(novoProduto);
-            return CreatedAtAction(nameof(GetProdutos), new {id = novoProduto.Id}, novoProduto);
+            try
+            {
+                novoProduto = await _produtoServices.AdicionarProdutoAsync(novoProduto);
+                return CreatedAtAction(nameof(GetProdutos), new { id = novoProduto.Id }, novoProduto);
+            }
+            catch( Exception ex){
+                return StatusCode(500, new { erro = "Erro inesperado", detalhes = ex.Message });
+            }
+            
 
         }
         [HttpPut]
@@ -55,15 +76,23 @@ namespace Ecommerce.Apresentacao
                 return BadRequest("Id inconsistente");
             }
 
-            var produto = await _produtoServices.BuscarProdutoPorIdAsync(novoProduto.Id);
-            if (produto is null)
+            try
             {
-                return BadRequest("Produto não existe");
+                var produto = await _produtoServices.BuscarProdutoPorIdAsync(novoProduto.Id);
+                if (produto is null)
+                {
+                    return BadRequest("Produto não existe");
+                }
+
+                produto = await _produtoServices.AtualizarProdutoAsync(novoProduto);
+
+                return Ok(produto);
             }
-
-            produto = await _produtoServices.AtualizarProdutoAsync(novoProduto);
-
-            return Ok(produto);
+            catch(Exception ex)
+            {
+                return StatusCode(500, new { erro = "Erro inesperado", detalhes = ex.Message });
+            }
+            
 
         }
 
@@ -71,10 +100,17 @@ namespace Ecommerce.Apresentacao
         [Route("{id}")]
         public async Task<IActionResult> DeleteProduto(int id)
         {
+            try
+            {
+                await _produtoServices.ApagarProdutoAsync(id);
 
-            await _produtoServices.ApagarProdutoAsync(id);
-
-            return Ok("Produto foi apagado com sucesso.");
+                return Ok("Produto foi apagado com sucesso.");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { erro = "Erro inesperado", detalhes = ex.Message });
+            }
+            
 
         }
         [HttpGet]
@@ -93,7 +129,7 @@ namespace Ecommerce.Apresentacao
             }
             catch (Exception ex) 
             {
-                return BadRequest($"Houve um erro ao chamar o filtro: {ex.Message}");
+                return StatusCode(500, new { erro = "Erro inesperado", detalhes = ex.Message });
             }
 
 
@@ -105,12 +141,12 @@ namespace Ecommerce.Apresentacao
             if (imagem == null || imagem.Length == 0)
                 return BadRequest("Houve algum erro com o envio da imagem.");
 
-            var produto = await _produtoServices.BuscarProdutoPorIdAsync(id);
-            if (produto == null)
-                return NotFound("Produto com esse id não está cadastrado na base de dados");
-
             try
             {
+                var produto = await _produtoServices.BuscarProdutoPorIdAsync(id);
+                if (produto == null)
+                    return NotFound("Produto com esse id não está cadastrado na base de dados");
+
                 var fileName = $"{Guid.NewGuid()}{Path.GetExtension(imagem.FileName)}";
                 var folderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/imagens");
 
@@ -131,7 +167,7 @@ namespace Ecommerce.Apresentacao
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return StatusCode(500, new { erro = "Erro inesperado", detalhes = ex.Message });
             }
         }
     }
