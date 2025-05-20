@@ -120,6 +120,27 @@
   },
   {
     "ContainingType": "Ecommerce.Apresentacao.ProdutoController",
+    "Method": "UploadImagem",
+    "RelativePath": "api/Produto/{id}/upload-imagem",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "imagem",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Ecommerce.Apresentacao.ProdutoController",
     "Method": "FiltrarProdutos",
     "RelativePath": "api/Produto/filtrar",
     "HttpMethod": "GET",

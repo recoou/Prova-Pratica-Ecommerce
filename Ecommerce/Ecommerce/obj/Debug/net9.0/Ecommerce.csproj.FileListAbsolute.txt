@@ -126,3 +126,4 @@ C:\Users\marco\Desktop\Teste Prático MA9\Ecommerce\Ecommerce\obj\Debug\net9.0\E
 C:\Users\marco\Desktop\Teste Prático MA9\Ecommerce\Ecommerce\obj\Debug\net9.0\Ecommerce.genruntimeconfig.cache
 C:\Users\marco\Desktop\Teste Prático MA9\Ecommerce\Ecommerce\obj\Debug\net9.0\ref\Ecommerce.dll
 C:\Users\marco\Desktop\Teste Prático MA9\Ecommerce\Ecommerce\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
+C:\Users\marco\Desktop\Teste Prático MA9\Ecommerce\Ecommerce\bin\Debug\net9.0\Ecommerce.staticwebassets.runtime.json

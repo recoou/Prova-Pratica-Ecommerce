@@ -77,7 +77,8 @@ namespace Ecommerce.Apresentacao
             return Ok("Produto foi apagado com sucesso.");
 
         }
-        [HttpGet("filtrar")]
+        [HttpGet]
+        [Route("filtrar")]
         public async Task<ActionResult<List<Produto>>> FiltrarProdutos(
             [FromQuery] string? categoria,
             [FromQuery] double? precoMenor,
@@ -96,6 +97,42 @@ namespace Ecommerce.Apresentacao
             }
 
 
+        }
+        [HttpPost]
+        [Route("{id}/upload-imagem")]
+        public async Task<IActionResult> UploadImagem(int id, IFormFile imagem)
+        {
+            if (imagem == null || imagem.Length == 0)
+                return BadRequest("Houve algum erro com o envio da imagem.");
+
+            var produto = await _produtoServices.BuscarProdutoPorIdAsync(id);
+            if (produto == null)
+                return NotFound("Produto com esse id não está cadastrado na base de dados");
+
+            try
+            {
+                var fileName = $"{Guid.NewGuid()}{Path.GetExtension(imagem.FileName)}";
+                var folderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/imagens");
+
+                if (!Directory.Exists(folderPath))
+                    Directory.CreateDirectory(folderPath);
+
+                var completePath = Path.Combine(folderPath, fileName);
+
+                using (var stream = new FileStream(completePath, FileMode.Create))
+                {
+                    await imagem.CopyToAsync(stream);
+                }
+
+                produto.ImagemCaminho = $"/imagens/{fileName}";
+                await _produtoServices.AtualizarProdutoAsync(produto);
+
+                return Ok(new { imagem = produto.ImagemCaminho });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }
