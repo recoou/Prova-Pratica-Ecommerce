@@ -1,6 +1,8 @@
 ﻿using Ecommerce.Models;
+using Ecommerce.Negocio.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace Ecommerce.Apresentacao
 {
@@ -8,102 +10,70 @@ namespace Ecommerce.Apresentacao
     [ApiController]
     public class ProdutoController : ControllerBase
     {
-        static private List<Produto> produtos = new List<Produto>
+        private readonly IProdutoServices _produtoServices;
+
+        public ProdutoController(IProdutoServices produtoServices)
         {
-            new Produto
-            {
-                Id = 1,
-                Nome = "Box",
-                Categoria = "Papel",
-                Preco = 2.3,
-                Status = true,
-                ImagemCaminho = null
-
-            },
-            new Produto
-            {
-                Id = 2,
-                Nome = "GoW Ascencion",
-                Categoria = "Game",
-                Preco = 200.99,
-                Status = true,
-                ImagemCaminho = null
-
-            },
-            new Produto
-            {
-                Id = 3,
-                Nome = "Commander Starter Deck",
-                Categoria = "Magic",
-                Preco = 500,
-                Status = false,
-                ImagemCaminho = null
-
-            }
-        };
+            _produtoServices = produtoServices;
+        }
 
         [HttpGet]
-        public ActionResult<List<Produto>> GetProdutos()
+        public async Task<ActionResult<List<Produto>>> GetProdutos()
         {
+            var produtos = await _produtoServices.BuscarTodosProdutosAsync();
             return Ok(produtos);
         }
 
         [HttpGet]
         [Route("{id}")]
-        public ActionResult<Produto> GetProdutoById(int id)
+        public async Task<ActionResult<Produto>> GetProdutoById(int id)
         {
-            var produto = produtos.FirstOrDefault(g => g.Id == id);
-            if(produto is null)
-            {
-                return NotFound("Produto não existe");
-            }
-             
+           var produto = await _produtoServices.BuscarProdutoPorIdAsync(id);
+
             return Ok(produto);
         }
 
         [HttpPost]
-        public ActionResult<Produto> AddProduto(Produto novoProduto)
+        public async Task<ActionResult<Produto>> AddProduto(Produto novoProduto)
         {
             if (novoProduto is null)
             {
                 return BadRequest();
             }
 
-            novoProduto.Id = produtos.Max(g => g.Id) + 1;
-            produtos.Add(novoProduto);
-            return CreatedAtAction(nameof(GetProdutoById), new {id = novoProduto.Id}, novoProduto);
+            novoProduto = await _produtoServices.AdicionarProdutoAsync(novoProduto);
+            return CreatedAtAction(nameof(GetProdutos), new {id = novoProduto.Id}, novoProduto);
 
         }
         [HttpPut]
         [Route("{id}")]
-        public IActionResult UpdateProduto(int id, Produto novoProduto)
+        public async Task<ActionResult<Produto>> UpdateProduto(int id, Produto novoProduto)
         {
-            var produto = produtos.FirstOrDefault(g => g.Id == id);
+            if(id != novoProduto.Id)
+            {
+                return BadRequest("Id inconsistente");
+            }
+
+            var produto = await _produtoServices.BuscarProdutoPorIdAsync(novoProduto.Id);
             if (produto is null)
             {
                 return BadRequest("Produto não existe");
             }
 
-            produto.Nome = novoProduto.Nome;
-            produto.Preco = novoProduto.Preco;
-            produto.Categoria = novoProduto.Categoria;
+            produto = await _produtoServices.AtualizarProdutoAsync(novoProduto);
 
-            return NoContent();
-            
+            return Ok(produto);
+
         }
 
         [HttpDelete]
         [Route("{id}")]
-        public IActionResult DeleteProduto(int id)
+        public async Task<IActionResult> DeleteProduto(int id)
         {
-            var produto = produtos.FirstOrDefault(g => g.Id == id);
-            if (produto is null)
-            {
-                return BadRequest("Produto não existe");
-            }
 
-            produtos.Remove(produto);
-            return NoContent();
+            await _produtoServices.ApagarProdutoAsync(id);
+
+            return Ok("Produto foi apagado com sucesso.");
 
         }
     }
