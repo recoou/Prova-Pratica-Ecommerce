@@ -18,7 +18,7 @@ namespace Ecommerce.Negocio
             return await _produtoRepository.GetAllAsync();
         }
 
-        public async Task<Produto> BuscarProdutoPorIdAsync(int id)
+        public async Task<Produto?> BuscarProdutoPorIdAsync(int id)
         {
             return await _produtoRepository.GetByIdAsync(id);
         }
@@ -33,12 +33,12 @@ namespace Ecommerce.Negocio
             return await _produtoRepository.AddAsync(produto);
         }
 
-        public async Task ApagarProdutoAsync(int id)
+        public async Task<bool> ApagarProdutoAsync(int id)
         {
-            await _produtoRepository.DeleteAsync(id);
+            return await _produtoRepository.DeleteAsync(id);
         }
 
-        public async Task<Produto> AtualizarProdutoAsync(Produto produto)
+        public async Task<Produto?> AtualizarProdutoAsync(Produto produto)
         {
             return await _produtoRepository.UpdateAsync(produto);
         }

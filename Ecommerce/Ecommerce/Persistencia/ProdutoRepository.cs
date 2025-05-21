@@ -18,12 +18,12 @@ namespace Ecommerce.Persistencia
             return await _context.Produtos.Where(p => p.Status == true).ToListAsync();
         }
 
-        public async Task<Produto> GetByIdAsync(int id)
+        public async Task<Produto?> GetByIdAsync(int id)
         {
-            var produto = await _context.Produtos.FindAsync(id);
+            var produto = await _context.Produtos.FirstOrDefaultAsync(p => p.Id == id && p.Status == true);
 
             if (produto == null) {
-                throw new ArgumentException("Não há um produto com este Id no banco");
+                return null;
             }
 
             return produto;
@@ -36,21 +36,26 @@ namespace Ecommerce.Persistencia
             return produto;
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task<bool> DeleteAsync(int id)
         {
-            var produto = await _context.Produtos.FindAsync(id);
+            var produto = await GetByIdAsync(id);
             if (produto == null)
             {
-                throw new ArgumentException("Não há um produto com este Id no banco");
+                return false;
             }
             produto.Status = false;
             await _context.SaveChangesAsync();
+            return true;
 
         }
 
-        public async Task<Produto> UpdateAsync(Produto produto)
+        public async Task<Produto?> UpdateAsync(Produto produto)
         {
             var produtoExistente = await GetByIdAsync(produto.Id);
+            if (produtoExistente == null)
+            {
+                return null;
+            }
 
             produtoExistente.Nome = produto.Nome;
             produtoExistente.Categoria = produto.Categoria;

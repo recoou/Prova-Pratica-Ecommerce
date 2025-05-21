@@ -5,10 +5,10 @@ namespace Ecommerce.Negocio.Interfaces
     public interface IProdutoServices
     {
         Task<List<Produto>> BuscarTodosProdutosAsync();
-        Task<Produto> BuscarProdutoPorIdAsync(int id);
+        Task<Produto?> BuscarProdutoPorIdAsync(int id);
         Task<Produto> AdicionarProdutoAsync(Produto produto);
-        Task<Produto> AtualizarProdutoAsync(Produto produto);
-        Task ApagarProdutoAsync(int id);
+        Task<Produto?> AtualizarProdutoAsync(Produto produto);
+        Task<bool> ApagarProdutoAsync(int id);
         Task<List<Produto>> BuscarProdutosFiltradosAsync(string? categoria, double? precoMenor, double? precoMaior, bool? status);
     }
 }

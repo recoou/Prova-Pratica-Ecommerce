@@ -5,10 +5,10 @@ namespace Ecommerce.Persistencia.Intefaces
     public interface IProdutoRepository
     {
         Task<List<Produto>> GetAllAsync();
-        Task<Produto> GetByIdAsync(int id);
+        Task<Produto?> GetByIdAsync(int id);
         Task<Produto> AddAsync(Produto produto);
-        Task<Produto> UpdateAsync(Produto produto);
-        Task DeleteAsync(int id);
+        Task<Produto?> UpdateAsync(Produto produto);
+        Task<bool> DeleteAsync(int id);
         Task<List<Produto>> GetAllFiltered(string? categoria, double? precoMenor, double? precoMaior, bool? status);
     }
 }

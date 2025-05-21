@@ -39,6 +39,10 @@ namespace Ecommerce.Apresentacao
             try
             {
                 var produto = await _produtoServices.BuscarProdutoPorIdAsync(id);
+                if (produto == null)
+                {
+                    return NotFound("Produto com esse id não está cadastrado no banco");
+                }
 
                 return Ok(produto);
             }
@@ -102,7 +106,9 @@ namespace Ecommerce.Apresentacao
         {
             try
             {
-                await _produtoServices.ApagarProdutoAsync(id);
+                bool sucesso = await _produtoServices.ApagarProdutoAsync(id);
+                if(!sucesso)
+                    return NotFound("Produto não foi encontrado na base de dados.");
 
                 return Ok("Produto foi apagado com sucesso.");
             }
